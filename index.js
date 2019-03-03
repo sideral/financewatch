@@ -1,7 +1,11 @@
+const config = require('./config');
 
-//const config = requir)
 const ApiServer = require('./lib/ApiServer');
-const Api = require('./Api');
+const Logger = require('./lib/Logger');
 
-var server = new ApiServer(Api);
-server.start(8000);
+const api = require('./api');
+
+const logger = new Logger(config.logPath);
+const server = new ApiServer(api, logger);
+
+server.start(config.serverPort);

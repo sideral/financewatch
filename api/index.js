@@ -1,6 +1,6 @@
-const StockApiClient = require('./lib/StockApiClient');
+const StockApiClient = require('../lib/StockApiClient');
 
-var Api = {
+module.exports = {
   stock: {
     /**
      * GET /stock/{symbol}
@@ -23,5 +23,3 @@ var Api = {
     }
   }
 };
-
-module.exports = Api;
