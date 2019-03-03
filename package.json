@@ -3,12 +3,9 @@
   "version": "1.0.0",
   "description": "This is a sample project that showcases Node.js both as a client of an external API as well as a REST API server.",
   "main": "app/index.js",
-  "directories": {
-    "test": "test"
-  },
   "scripts": {
-    "start": "node app/index.js",
-    "test": "node test/run.js"
+    "start": "node ./app/index.js",
+    "test": "node ./test/run.js"
   },
   "repository": {
     "type": "git",
