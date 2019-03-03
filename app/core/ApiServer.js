@@ -37,6 +37,7 @@ class ApiServer {
       this.logger.log(path, status, e.message);
     }
 
+    res.setHeader('Content-Type', 'application/json');
     res.writeHead(status);
     res.write(json + '\n');
     res.end();
