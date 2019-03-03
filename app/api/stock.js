@@ -27,7 +27,7 @@ module.exports = {
           reject(new ApiError(`Ticker symbol '${symbol}' not recognized.`, 404, err));
         }
         else{
-          reject(new ApiError('I was not possible to retrieve stock information.', 500, err));
+          reject(new ApiError('It was not possible to retrieve stock information.', 500, err));
         }
       });
     });
