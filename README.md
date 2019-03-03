@@ -6,11 +6,16 @@ This is a sample project that showcases Node.js both as a client of an external 
 
 Node 8.15+
 
-### How to run
+### Running
 
-1. Start the server with `node app`.
+1. Start the server with `npm start`.
 2. Call the API by running `curl -X GET localhost:8000/stock/GOOG`.
 3. You can change `GOOG` with any other Stock Ticker Symbol.
+4. Requests will be logged in /app/tpm/api.log
+
+### Testing
+
+1. `npm test`
 
 ### License
 
