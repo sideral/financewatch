@@ -40,6 +40,7 @@ class ApiServer {
   }
 
   async callEndpoint(path, method) {
+    //Extra parameters are ignored.
     const [name, id] = path.split('/').slice(1);
     const endpoint = this.endpoints[name];
 
@@ -56,18 +57,24 @@ class ApiServer {
   }
 
   handleError(e) {
-    if (e.name === 'ApiError') {
-      return {
-        status: e.statusCode,
-        json: JSON.stringify({ error: e.message }),
-        message: e.internalMessage
-      };
+    let status = 500, errorMessage = e.message, internalMessage = e.message;
+
+    switch (e.name) {
+      case 'ApiError':
+        status = e.statusCode;
+        internalMessage = e.internalMessage;
+        break;
+      case 'HttpError':
+        status = e.statusCode;
+        break;
+      default:
+        errorMessage = 'Internal server error.';
     }
 
     return {
-      status: 500,
-      json: JSON.stringify({ error: 'Internal server error.' }),
-      message: e.message
+      status: status,
+      json: JSON.stringify({ error: errorMessage }),
+      message: internalMessage
     };
   }
 }

@@ -8,6 +8,10 @@ module.exports = {
    */
   get: (symbol) => {
     return new Promise((resolve, reject) => {
+      if(symbol === undefined || symbol === ''){
+        return reject(new ApiError('A ticker symbol is required.', 400));
+      }
+
       const client = new StockService(symbol);
       Promise.all([
         client.fetchLatestPrice(),
