@@ -5,12 +5,11 @@ class Logger {
     this.file = fs.openSync(filePath, 'a');
   }
 
-  log(path, status, message){
-    message = message? message : '';
+  log(path, status, message = ''){
     const date = Logger.formatDate();
     fs.appendFile(this.file, `${date} ${status} ${path} ${message}\n`, (err) => {
-      //Log to console
-      console.error(err);
+      //Non-critical. Log to console.
+      if(err) console.error(err);
     });
   }
 

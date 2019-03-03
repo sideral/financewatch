@@ -1,4 +1,6 @@
-var https = require('https');
+const https = require('https');
+
+const HttpError = require('../core/errors/HttpError');
 
 const SERVICE_URL = 'https://api.iextrading.com/1.0/stock';
 
@@ -26,9 +28,7 @@ class StockService {
     return new Promise((resolve, reject) => {
       https.get(this.resourceUrl + path, (res) => {
         if (res.statusCode !== 200) {
-          const error = new Error(`Invalid status code: ${res.statusCode}`);
-          error.statusCode = res.statusCode;
-          reject(error);
+          reject(new HttpError(`Unexpected status code: ${res.statusCode}`, res.statusCode));
           res.resume();
           return;
         }
