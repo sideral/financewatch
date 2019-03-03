@@ -8,7 +8,7 @@ Node 8.15+
 
 ### How to run
 
-1. Start the server with `node index.js`.
+1. Start the server with `node app`.
 2. Call the API by running `curl -X GET localhost:8000/stock/GOOG`.
 3. You can change `GOOG` with any other Stock Ticker Symbol.
 

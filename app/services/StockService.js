@@ -26,10 +26,10 @@ class StockService {
     return new Promise((resolve, reject) => {
       https.get(this.resourceUrl + path, (res) => {
         if (res.statusCode !== 200) {
-          res.resume();
           const error = new Error(`Invalid status code: ${res.statusCode}`);
           error.statusCode = res.statusCode;
           reject(error);
+          res.resume();
           return;
         }
 
