@@ -1,8 +1,10 @@
 var https = require('https');
 
-class StockApiClient {
+const SERVICE_URL = 'https://api.iextrading.com/1.0/stock';
+
+class StockService {
   constructor(symbol) {
-    this.resourceUrl = `https://api.iextrading.com/1.0/stock/${symbol}/`;
+    this.resourceUrl = `${SERVICE_URL}/${symbol}/`;
   }
 
   async fetchLogoUrl() {
@@ -32,15 +34,15 @@ class StockApiClient {
         }
 
         res.setEncoding('utf8');
-        let data = '';
 
+        let buffer = '';
         res.on('data', (chunk) => {
-          data += chunk;
+          buffer += chunk;
         });
 
         res.on('end', () => {
           try {
-            resolve(JSON.parse(data));
+            resolve(JSON.parse(buffer));
           }
           catch (e) {
             reject(new Error(e.message));
@@ -54,4 +56,4 @@ class StockApiClient {
   }
 }
 
-module.exports = StockApiClient;
+module.exports = StockService;

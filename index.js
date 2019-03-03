@@ -1,7 +1,7 @@
 const config = require('./config');
 
-const ApiServer = require('./lib/ApiServer');
-const Logger = require('./lib/Logger');
+const ApiServer = require('./core/ApiServer');
+const Logger = require('./utils/Logger');
 
 const api = require('./api');
 

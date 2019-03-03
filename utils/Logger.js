@@ -9,7 +9,8 @@ class Logger {
     message = message? message : '';
     const date = Logger.formatDate();
     fs.appendFile(this.file, `${date} ${status} ${path} ${message}\n`, (err) => {
-      //Ignore error.
+      //Log to console
+      console.error(err);
     });
   }
 

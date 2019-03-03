@@ -1,4 +1,4 @@
-const StockApiClient = require('../lib/StockApiClient');
+const StockService = require('../services/StockService');
 
 module.exports = {
   stock: {
@@ -8,7 +8,7 @@ module.exports = {
      */
     get: (symbol) => {
       return new Promise((resolve, reject) => {
-        const client = new StockApiClient(symbol);
+        const client = new StockService(symbol);
         Promise.all([
           client.fetchLatestPrice(),
           client.fetchLogoUrl(),

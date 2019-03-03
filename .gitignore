@@ -75,4 +75,3 @@ typings/
 .serverless
 
 .idea
-/log/*.log
